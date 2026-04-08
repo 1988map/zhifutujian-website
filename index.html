@@ -330,6 +330,9 @@ body::before {
   top: 72px;
   left: 0;
   right: 0;
+  max-height: calc(100vh - 72px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   background: rgba(9, 11, 16, 0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -1239,6 +1242,7 @@ body::before {
   gap: 24px;
   max-width: 960px;
   margin: 0 auto;
+  padding-top: 16px;
 }
 
 .pricing-card {
@@ -1249,7 +1253,6 @@ body::before {
   text-align: center;
   position: relative;
   transition: var(--transition-smooth);
-  overflow: hidden;
 }
 
 .pricing-card.featured {
@@ -1685,26 +1688,271 @@ body::before {
 }
 
 @media (max-width: 480px) {
+  /* Hero区域优化 */
+  .hero {
+    padding: calc(72px + 40px) 20px 60px;
+    min-height: auto;
+    min-height: 100svh;
+  }
+
+  .hero-title {
+    font-size: clamp(32px, 10vw, 42px);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+    margin: 16px auto 32px;
+    padding: 0 10px;
+  }
+
   .hero-cta {
     flex-direction: column;
     align-items: center;
+    gap: 12px;
+    margin-bottom: 48px;
   }
 
   .btn-hero,
   .btn-hero-ghost {
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
     justify-content: center;
+    padding: 14px 32px;
+    font-size: 15px;
+  }
+
+  .hero-stats {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .stat-number {
+    font-size: 28px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+  }
+
+  /* Section标题优化 */
+  .section-title {
+    font-size: clamp(24px, 7vw, 32px);
+    line-height: 1.25;
+    padding: 0 10px;
+  }
+
+  .section-desc {
+    font-size: 14px;
+    padding: 0 15px;
+    line-height: 1.7;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  /* 卡片网格优化 */
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .card-mini {
+    padding: 12px 8px;
+  }
+
+  .card-mini-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .card-mini-name {
+    font-size: 11px;
+  }
+
+  /* NPC卡片优化 */
+  .npc-card {
+    width: 160px;
+    padding: 16px;
+  }
+
+  .npc-avatar {
+    width: 64px;
+    height: 64px;
+  }
+
+  .npc-name {
+    font-size: 15px;
+  }
+
+  .npc-title {
+    font-size: 12px;
+  }
+
+  /* 价格卡片优化 */
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-top: 12px;
+  }
+
+  .pricing-card {
+    padding: 28px 20px;
+  }
+
+  .price-number {
+    font-size: 36px;
+  }
+
+  /* CTA区域优化 */
+  .cta-inner {
+    padding: 40px 20px;
+    border-radius: 20px;
+  }
+
+  .cta-title {
+    font-size: clamp(22px, 6vw, 28px);
+  }
+
+  .cta-subtitle {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+
+  /* 页脚优化 */
+  .footer-top {
+    gap: 24px;
+  }
+
+  .footer-section h4 {
+    font-size: 14px;
+  }
+
+  .footer-section a {
+    font-size: 13px;
+  }
+
+  /* 导航栏优化 */
+  .nav-inner {
+    height: 64px;
+  }
+
+  .nav-logo-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nav-logo-text {
+    font-size: 16px;
+  }
+
+  /* 移动端菜单位置调整 */
+  .mobile-menu {
+    top: 64px;
+    max-height: calc(100vh - 64px);
+  }
+
+  /* 通用容器padding */
+  .container {
+    padding: 0 16px;
+  }
+
+  /* 痛点卡片 */
+  .pain-card {
+    padding: 24px 20px;
+  }
+
+  .pain-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+
+  /* Zone卡片 */
+  .zone-card {
+    padding: 24px 20px;
+  }
+
+  .zone-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+
+  /* 流程步骤 */
+  .journey-step {
+    padding: 24px 20px;
+  }
+
+  .step-number {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  /* FAQ */
+  .faq-item {
+    padding: 18px 16px;
+  }
+
+  .faq-question {
+    font-size: 15px;
+    padding-right: 30px;
+  }
+
+  .faq-answer {
+    font-size: 14px;
+  }
+}
+
+/* 超小屏幕优化 (iPhone SE等) */
+@media (max-width: 375px) {
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+  }
+
+  .section-title {
+    font-size: 22px;
   }
 
   .cards-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
 
+  .card-mini {
+    padding: 14px 10px;
+  }
+
   .npc-card {
-    width: 180px;
-    padding: 18px;
+    width: 140px;
+    padding: 14px;
+  }
+
+  .npc-avatar {
+    width: 56px;
+    height: 56px;
+  }
+
+  .btn-hero,
+  .btn-hero-ghost {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+
+  .price-number {
+    font-size: 32px;
+  }
+
+  .cta-title {
+    font-size: 20px;
   }
 }
 
